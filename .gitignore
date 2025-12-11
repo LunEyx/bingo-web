@@ -26,5 +26,10 @@ dist-ssr
 ## Panda
 styled-system
 styled-system-studio
+
+# Storybook
 *storybook.log
 storybook-static
+
+# Testing
+test-results
