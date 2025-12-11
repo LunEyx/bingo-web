@@ -27,6 +27,7 @@ const config: StorybookConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       '@': path.resolve(dirname, '../src'),
+      'styled-system': path.resolve(dirname, '../styled-system'),
     }
     return config
   },

@@ -110,4 +110,5 @@ export default defineConfig({
 
   globalCss: globalCss,
   conditions: conditions,
+  jsxFramework: 'react',
 })
