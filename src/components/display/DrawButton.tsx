@@ -14,7 +14,11 @@ const DrawButton = () => {
     dispatch(draw(newNumber))
   }
   return (
-    <Button variant="surface" onClick={onClick}>
+    <Button
+      variant="surface"
+      onClick={onClick}
+      disabled={bingoState.remainingNumbers.length === 0}
+    >
       Draw
     </Button>
   )

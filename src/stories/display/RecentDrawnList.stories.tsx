@@ -10,8 +10,4 @@ export default meta
 
 type Story = StoryObj<typeof RecentDrawnList>
 
-export const Default: Story = {
-  args: {
-    recentNumbers: [5, 12, 23, 34, 45],
-  },
-}
+export const Default: Story = {}

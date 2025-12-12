@@ -4,14 +4,17 @@ import RecentDrawnList from './RecentDrawnList'
 import DrawnBall from './DrawnBall'
 import DrawButton from './DrawButton'
 import { useBingoState } from '@/hooks/useBingo'
+import ResetButton from './ResetButton'
 
 const DrawnList = (props: Card.RootProps) => {
   const { ...cardRootProps } = props
   const bingoState = useBingoState()
+
   return (
     <Card.Root maxW="24rem" maxH="100vh" overflowY="auto" {...cardRootProps}>
       <Card.Header>
         <DrawButton />
+        {bingoState.remainingNumbers.length === 0 && <ResetButton />}
         <RecentDrawnList />
       </Card.Header>
       <Divider />

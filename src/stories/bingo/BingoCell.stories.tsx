@@ -13,6 +13,5 @@ type Story = StoryObj<typeof BingoCell>
 export const Default: Story = {
   args: {
     number: 42,
-    isFlag: false,
   },
 }

@@ -4,6 +4,7 @@ export const bingoInitialState = {
   isDrawnList: [],
   remainingNumbers: Array.from({ length: 99 }, (_, i) => i + 1),
   recentDrawnNumbers: [],
+  bingoCards: [],
 }
 
 export const bingoReducer = (
@@ -38,6 +39,23 @@ export const bingoReducer = (
         remainingNumbers: newRemainingNumbers,
         recentDrawnNumbers: newRecentDrawnNumbers,
       }
+    case 'RESET_GAME':
+      return bingoInitialState
+    case 'ADD_NEW_BINGO_CARD':
+      if (state.bingoCards.length >= 4) {
+        return state
+      }
+
+      return {
+        ...state,
+        bingoCards: [
+          ...state.bingoCards,
+          Array.from({ length: 99 }, (_, i) => i + 1)
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 25),
+        ],
+      }
+
     default:
       return state
   }

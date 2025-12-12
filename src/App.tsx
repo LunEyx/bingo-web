@@ -1,18 +1,35 @@
-import { Center, Flex } from 'styled-system/jsx'
+import { Flex } from 'styled-system/jsx'
 import BingoCard from './components/bingo/BingoCard'
 import DrawnList from './components/display/DrawnList'
 import BingoProvider from './providers/BingoProvider'
 
 const App = () => {
-  const numbers = Array.from({ length: 25 }, (_, i) => i + 1)
-
   return (
     <BingoProvider>
       <Flex flexDir="row">
         <DrawnList />
-        <Center height="100vh" w="100vw">
-          <BingoCard numbers={numbers} />
-        </Center>
+        <Flex flexDir="column" gap="0.5rem">
+          <Flex
+            flexDir="row"
+            flexWrap="wrap"
+            gap="0.5rem"
+            justifyContent="center"
+            alignItems="flex-start"
+          >
+            <BingoCard flex="49% 0 0" index={0} />
+            <BingoCard flex="49% 0 0" index={1} />
+          </Flex>
+          <Flex
+            flexDir="row"
+            flexWrap="wrap"
+            gap="0.5rem"
+            justifyContent="center"
+            alignItems="flex-start"
+          >
+            <BingoCard flex="49% 0 0" index={2} />
+            <BingoCard flex="49% 0 0" index={3} />
+          </Flex>
+        </Flex>
       </Flex>
     </BingoProvider>
   )
