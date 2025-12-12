@@ -1,7 +1,7 @@
-import { spinner } from "./spinner";
-import { absoluteCenter } from "./absolute-center";
-import { group } from "./group";
-import { button } from "./button";
+import { spinner } from './spinner'
+import { absoluteCenter } from './absolute-center'
+import { group } from './group'
+import { button } from './button'
 import { text } from './text'
 import { card } from './card'
 export const recipes = {
@@ -10,6 +10,6 @@ export const recipes = {
   button,
   group,
   absoluteCenter,
-  spinner
+  spinner,
 }
 export const slotRecipes = {}

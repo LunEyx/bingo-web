@@ -1,12 +1,10 @@
 import { Flex } from 'styled-system/jsx'
 import DrawnBall from './DrawnBall'
+import { useBingoState } from '@/hooks/useBingo'
 
-interface RecentDrawnListProps {
-  recentNumbers: number[]
-}
-
-const RecentDrawnList = (props: RecentDrawnListProps) => {
-  const { recentNumbers } = props
+const RecentDrawnList = () => {
+  const bingoState = useBingoState()
+  const recentNumbers = bingoState.recentDrawnNumbers
 
   return (
     <Flex flexDir="row" gap={2} justifyContent="center" alignItems="center">

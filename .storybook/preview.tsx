@@ -1,8 +1,16 @@
 import type { Preview } from '@storybook/react-vite'
+import BingoProvider from '../src/providers/BingoProvider'
 
 import '../src/index.css'
 
 const preview: Preview = {
+  decorators: [
+    (Story) => (
+      <BingoProvider>
+        <Story />
+      </BingoProvider>
+    ),
+  ],
   parameters: {
     controls: {
       matchers: {

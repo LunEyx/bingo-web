@@ -1,3 +1,4 @@
+import { defineConfig } from '@pandacss/dev'
 import { green } from '@/theme/colors/green'
 import { red } from '@/theme/colors/red'
 import { slate } from '@/theme/colors/slate'
@@ -13,7 +14,6 @@ import { keyframes } from '@/theme/keyframes'
 import { globalCss } from '@/theme/global-css'
 import { conditions } from '@/theme/conditions'
 import { slotRecipes, recipes } from '@/theme/recipes'
-import { defineConfig } from '@pandacss/dev'
 
 export default defineConfig({
   // Whether to use css reset

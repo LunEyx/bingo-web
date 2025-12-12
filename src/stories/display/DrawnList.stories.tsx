@@ -10,8 +10,4 @@ export default meta
 
 type Story = StoryObj<typeof DrawnList>
 
-export const Default: Story = {
-  args: {
-    isDrawnList: [false, true],
-  },
-}
+export const Default: Story = {}

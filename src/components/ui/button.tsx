@@ -33,38 +33,54 @@ const BaseButton = styled(ark.button, button)
 
 export interface ButtonProps extends BaseButtonProps, ButtonLoadingProps {}
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(props, ref) {
-  const propsContext = useButtonPropsContext()
-  const buttonProps = useMemo(
-    () => mergeProps<ButtonProps>(propsContext, props),
-    [propsContext, props],
-  )
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button(props, ref) {
+    const propsContext = useButtonPropsContext()
+    const buttonProps = useMemo(
+      () => mergeProps<ButtonProps>(propsContext, props),
+      [propsContext, props],
+    )
 
-  const { loading, loadingText, children, spinner, spinnerPlacement, ...rest } = buttonProps
-  return (
-    <BaseButton
-      type="button"
-      ref={ref}
-      {...rest}
-      data-loading={loading ? '' : undefined}
-      disabled={loading || rest.disabled}
-    >
-      {!props.asChild && loading ? (
-        <Loader spinner={spinner} text={loadingText} spinnerPlacement={spinnerPlacement}>
-          {children}
-        </Loader>
-      ) : (
-        children
-      )}
-    </BaseButton>
-  )
-})
+    const {
+      loading,
+      loadingText,
+      children,
+      spinner,
+      spinnerPlacement,
+      ...rest
+    } = buttonProps
+    return (
+      <BaseButton
+        type="button"
+        ref={ref}
+        {...rest}
+        data-loading={loading ? '' : undefined}
+        disabled={loading || rest.disabled}
+      >
+        {!props.asChild && loading ? (
+          <Loader
+            spinner={spinner}
+            text={loadingText}
+            spinnerPlacement={spinnerPlacement}
+          >
+            {children}
+          </Loader>
+        ) : (
+          children
+        )}
+      </BaseButton>
+    )
+  },
+)
 
 export interface ButtonGroupProps extends GroupProps, ButtonVariantProps {}
 
 export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
   function ButtonGroup(props, ref) {
-    const [variantProps, otherProps] = useMemo(() => button.splitVariantProps(props), [props])
+    const [variantProps, otherProps] = useMemo(
+      () => button.splitVariantProps(props),
+      [props],
+    )
     return (
       <ButtonPropsProvider value={variantProps}>
         <Group ref={ref} {...otherProps} />
@@ -73,9 +89,10 @@ export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
   },
 )
 
-const [ButtonPropsProvider, useButtonPropsContext] = createContext<ButtonVariantProps>({
-  name: 'ButtonPropsContext',
-  hookName: 'useButtonPropsContext',
-  providerName: '<PropsProvider />',
-  strict: false,
-})
+const [ButtonPropsProvider, useButtonPropsContext] =
+  createContext<ButtonVariantProps>({
+    name: 'ButtonPropsContext',
+    hookName: 'useButtonPropsContext',
+    providerName: '<PropsProvider />',
+    strict: false,
+  })

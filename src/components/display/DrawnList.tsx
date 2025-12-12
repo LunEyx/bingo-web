@@ -1,21 +1,18 @@
-import { Card } from '@/components/ui'
-import DrawnBall from './DrawnBall'
-import RecentDrawnList from './RecentDrawnList'
 import { Divider } from 'styled-system/jsx'
+import { Card } from '@/components/ui'
+import RecentDrawnList from './RecentDrawnList'
+import DrawnBall from './DrawnBall'
 import DrawButton from './DrawButton'
+import { useBingoState } from '@/hooks/useBingo'
 
-interface DrawnListProps extends Card.RootProps {
-  isDrawnList: boolean[]
-}
-
-const DrawnList = (props: DrawnListProps) => {
-  const { isDrawnList, ...cardRootProps } = props
-
+const DrawnList = (props: Card.RootProps) => {
+  const { ...cardRootProps } = props
+  const bingoState = useBingoState()
   return (
     <Card.Root maxW="24rem" maxH="100vh" overflowY="auto" {...cardRootProps}>
       <Card.Header>
         <DrawButton />
-        <RecentDrawnList recentNumbers={[3, 4, 5]} />
+        <RecentDrawnList />
       </Card.Header>
       <Divider />
       <Card.Body
@@ -31,7 +28,7 @@ const DrawnList = (props: DrawnListProps) => {
             key={index}
             w="20%"
             number={index + 1}
-            isDrawn={isDrawnList[index]}
+            isDrawn={bingoState.isDrawnList[index]}
           />
         ))}
       </Card.Body>
